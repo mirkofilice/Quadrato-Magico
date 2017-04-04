@@ -6,11 +6,18 @@ import java.util.List;
 public class Square {
 
 	// List come struttura dati per la mia griglia
-	List<Integer> griglia = null;
-	int N;
-	int N2;
-	int magicConst;
+	private List<Integer> griglia = null;
+	private int N;
+	private int N2;
+	private int magicConst;
 
+	public Square(Square square) {
+		this.griglia = new ArrayList<Integer>(square.getGriglia());
+		this.N = square.getN();
+		this.N2 = square.getN2();
+		this.magicConst = square.getMagicConst();
+	}
+	
 	public Square(int dimension) {
 		this.griglia = new ArrayList<Integer>();
 		this.N = dimension;
@@ -18,8 +25,20 @@ public class Square {
 		this.magicConst = N * (N * N + 1) / 2;
 	}
 
+	public List<Integer> getGriglia() {
+		return griglia;
+	}
+	
+	public int getN() {
+		return N;
+	}
+	
 	public int getN2() {
 		return N2;
+	}
+	
+	public int getMagicConst() {
+		return magicConst;
 	}
 
 	public boolean contains(int number) {
@@ -115,8 +134,14 @@ public class Square {
 		return true;
 	}
 	
-	public String toString(){
-		return griglia.toString();
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < N; j++)
+				sb.append(String.format("%d ", griglia.get(i * N + j)));
+			sb.append("\n");
+		}
+		return sb.toString();
 	}
 	
 }

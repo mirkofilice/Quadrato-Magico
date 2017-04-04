@@ -26,8 +26,7 @@ public class Model {
 		
 		if (step >= square.getN2()) {
 			if (square.checkMagicConst()) {
-				System.out.println(square.toString());
-				solutions.add(square);
+				solutions.add(new Square(square));
 			}
 			return;
 		}
