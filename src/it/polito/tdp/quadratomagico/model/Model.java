@@ -26,7 +26,9 @@ public class Model {
 		
 		if (step >= square.getN2()) {
 			if (square.checkMagicConst()) {
-				solutions.add(new Square(square));
+				solutions.add(new Square(square));//se scrivessi solo add(square) sovrascriverei ogni volta la soluzione in quanto
+												  //aggiungerei alla lista il riferimento sempre allo stesso oggetto square il quale
+												  //cambia ogni volta che si chiama la funzione ricorsiva
 			}
 			return;
 		}
@@ -35,7 +37,7 @@ public class Model {
 			if (!square.contains(i)) {
 				square.add(i);
 				recursive(square, step + 1);
-				square.remove(step);
+				square.remove(i);
 			}
 		}
 	}

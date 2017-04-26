@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Square {
+	
+	private static int square_id=0;
+	private final int id;
 
 	// List come struttura dati per la mia griglia
 	private List<Integer> griglia = null;
@@ -16,6 +19,8 @@ public class Square {
 		this.N = square.getN();
 		this.N2 = square.getN2();
 		this.magicConst = square.getMagicConst();
+		id=square_id;
+		square_id+=1;
 	}
 	
 	public Square(int dimension) {
@@ -23,6 +28,8 @@ public class Square {
 		this.N = dimension;
 		this.N2 = N * N;
 		this.magicConst = N * (N * N + 1) / 2;
+		id=square_id;
+		square_id+=1;
 	}
 
 	public List<Integer> getGriglia() {
@@ -49,8 +56,9 @@ public class Square {
 		griglia.add(number);
 	}
 
-	public void remove(int pos) {
-		griglia.remove(pos);
+	public void remove(int number) {
+		griglia.remove((Integer)number);
+		//griglia.remove(number);
 	}
 
 	public boolean checkMagicConst() {
@@ -141,7 +149,7 @@ public class Square {
 				sb.append(String.format("%d ", griglia.get(i * N + j)));
 			sb.append("\n");
 		}
-		return sb.toString();
+		return this.id+":\n"+sb.toString();
 	}
 	
 }
